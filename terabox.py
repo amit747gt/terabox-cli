@@ -1,3 +1,4 @@
+import uuid
 import requests
 import os
 import sys
@@ -103,7 +104,7 @@ class TeraboxManager:
             
     def upload(self, file_path):
         if not os.path.exists(file_path): print(f"Upload Error: File not found at '{file_path}'"); return False
-        chunk_size = 20 * 1024 * 1024; file_size = os.path.getsize(file_path); file_name = os.path.basename(file_path)
+        chunk_size = 4 * 1024 * 1024; file_size = os.path.getsize(file_path); file_name = os.path.basename(file_path)
         try:
             print(f"Step 1: Pre-allocating file '{file_name}' on server...")
             with open(file_path, 'rb') as f: first_chunk_for_md5 = f.read(256 * 1024)
@@ -183,7 +184,6 @@ def main():
     init_db()
 
     if args.command == "add":
-        print("\n" + "#"*60 + "\n### WARNING: Storing credentials is an insecure practice. ###\n" + "#"*60 + "\n")
         email = input(f"Enter the email for the new '{args.role}' account: ")
         password = getpass.getpass("Enter the password (will not be shown): ")
         login_and_add_account(args.role, email, password)
