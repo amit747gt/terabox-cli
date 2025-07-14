@@ -13,8 +13,8 @@ This document provides instructions on how to set up and use the Terabox Command
 1.  **Clone the Repository**
 
     ```bash
-    git clone https://github.com/your-username/your-repository-name
-    cd your-repository-name
+    git clone https://github.com/amit747gt/terabox-cli.git
+    cd terabox-cli
     ```
 
 2.  **Install Dependencies**
@@ -50,8 +50,8 @@ This document provides instructions on how to set up and use the Terabox Command
 All commands follow the structure: `python terabox.py [flag] <command> [arguments]`
 
 ### Account Flags
--   `--primary`: Use the primary account (default).
--   `--secondary <N>`: Use a secondary account (e.g., `--secondary 1`).
+-   `--primary or -p`: Use the primary account (default).
+-   `--secondary <N> or -s <N>`: Use a secondary account (e.g., `--secondary 1 or -s 1`).
 
 ### Core Commands
 
@@ -64,8 +64,8 @@ All commands follow the structure: `python terabox.py [flag] <command> [argument
 
 -   **`upload [option] <local_path>`**
     Uploads a file.
-    -   `--secure`: Encrypts the file before uploading (recommended).
-    -   `--insecure`: Uploads the file directly.
+    -   `--secure or -s`: Encrypts the file before uploading (recommended).
+    -   `--insecure or -i`: Uploads the file directly.
     ```bash
     # Securely upload a file
     python terabox.py upload --secure "My Project.zip"
@@ -92,36 +92,36 @@ All commands follow the structure: `python terabox.py [flag] <command> [argument
     Lists files and directories on Terabox. Defaults to the root directory (`/`).
     ```bash
     # List files in the root
-    python terabox.py ls
+    python terabox.py -p ls
     
     # List files in a specific folder
-    python terabox.py ls /my_backups/
+    python terabox.py -p ls /my_backups/
     ```
 
 -   **`mkdir <remote_path>`**
     Creates a new directory on Terabox.
     ```bash
-    python terabox.py mkdir "/my_backups/2024-archive"
+    python terabox.py -p mkdir "/my_backups/2024-archive"
     ```
 
 -   **`mv <source> <destination>`**
     Moves a file or directory.
     ```bash
-    python terabox.py mv "/file.txt" "/new_folder/"
+    python terabox.py -p mv "/file.txt" "/new_folder/"
     ```
 
 -   **`cp <source> <destination>`**
     Copies a file or directory.
     ```bash
-    python terabox.py cp "/file.txt" "/archive_folder/"
+    python terabox.py -p cp "/file.txt" "/archive_folder/"
     ```
 
 -   **`rm <paths...>`**
     Deletes one or more files/directories.
     ```bash
     # Delete a single file
-    python terabox.py rm "/old_file.zip"
+    python terabox.py -p rm "/old_file.zip"
     
     # Delete multiple items
-    python terabox.py rm "/temp_folder/" "/another_old_file.txt"
+    python terabox.py -p rm "/temp_folder/" "/another_old_file.txt"
     ```
